@@ -17,7 +17,18 @@
     <nav class="catalog-crumbs" aria-label="Путь к разделу">
       <a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="catalog.html">Каталог</a><span id="catalogPath"></span>
     </nav>
-    <div class="catalog-layout">
+    <section class="catalog-overview" id="catalogOverview" aria-labelledby="overviewTitle" hidden>
+      <div class="catalog-overview-heading">
+        <h1 id="overviewTitle">Каталог</h1>
+        <a class="btn btn-ghost" href="catalog.html?view=all">Все товары →</a>
+      </div>
+      <div class="catalog-overview-grid" id="catalogOverviewGrid"></div>
+      <a class="catalog-size-link" href="tube-sizes.html">
+        <span><strong>Размеры нержавеющих труб</strong><small>Таблицы DIN, ISO и ГОСТ</small></span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+    <div class="catalog-layout" id="catalogListing">
       <aside class="catalog-sidebar">
         <nav class="category-menu" aria-label="Разделы каталога">
           <h2>Наш ассортимент</h2>
@@ -56,12 +67,12 @@
               <option value="price-down">Цена за единицу ↓</option>
             </select>
             <div class="catalog-view" role="group" aria-label="Вид каталога">
-              <button type="button" data-view="list" aria-pressed="true">Список</button>
-              <button type="button" data-view="grid" aria-pressed="false">Плитка</button>
+              <button type="button" data-view="list" aria-pressed="false">Список</button>
+              <button type="button" data-view="grid" aria-pressed="true">Плитка</button>
             </div>
           </div>
         </div>
-        <div class="products-grid catalog-list" id="productsGrid"></div>
+        <div class="products-grid" id="productsGrid"></div>
       </section>
     </div>
   </div>

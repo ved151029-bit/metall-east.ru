@@ -36,9 +36,43 @@ function normalizeCatalogSearch(value) {
     .replace(/\s*×\s*/g, '×').trim();
 }
 
+function renderCatalogOverview() {
+  const order = ['krany', 'fitingi', 'flantsy', 'truby', 'listy'];
+  const number = new Intl.NumberFormat('ru-RU');
+  const plural = new Intl.PluralRules('ru');
+  const countLabels = { one: 'позиция', few: 'позиции', many: 'позиций', other: 'позиций' };
+
+  document.getElementById('catalogOverviewGrid').innerHTML = order.map(id => {
+    const category = CATEGORIES.find(item => item.id === id);
+    const section = SECTIONS[id];
+    const count = PRODUCTS.filter(product => product.cat === id).length;
+    const name = id === 'krany' ? 'Трубопроводная арматура' : category.name;
+    return `
+      <article class="catalog-category">
+        <div class="catalog-category-content">
+          <h2><a href="${catalogUrl(id)}">${name}</a></h2>
+          <p>${number.format(count)} ${countLabels[plural.select(count)]}</p>
+          <ul>${Object.entries(section.types).map(([key, title]) =>
+            `<li><a href="${catalogUrl(id, key)}">${title}</a></li>`
+          ).join('')}</ul>
+        </div>
+        <a class="catalog-category-photo" href="${catalogUrl(id)}" aria-label="${name}">
+          <img src="${section.image}" alt="" width="96" height="96">
+        </a>
+      </article>`;
+  }).join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(location.search);
   const category = CATEGORIES.find(item => item.id === params.get('cat'));
+  if (!category && !params.get('q')?.trim() && params.get('view') !== 'all') {
+    document.getElementById('catalogListing').hidden = true;
+    renderCatalogOverview();
+    document.getElementById('catalogOverview').hidden = false;
+    return;
+  }
+
   const section = category ? SECTIONS[category.id] : null;
   document.getElementById('tubeReferenceLink').hidden = Boolean(category && category.id !== 'truby');
   const requestedType = params.get('type');
@@ -56,7 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
   search.value = params.get('q') || '';
   if (title) {
     document.getElementById('catalogTitle').textContent = title;
-    document.getElementById('catalogPath').textContent = ' / ' + title;
+    const path = document.getElementById('catalogPath');
+    if (type) {
+      const parent = document.createElement('a');
+      parent.href = catalogUrl(category.id);
+      parent.textContent = category.name;
+      path.append(' / ', parent);
+    }
+    path.append(' / ' + title);
     document.title = title + ' — МЕТАЛЛ-ИСТ';
   }
 
@@ -69,17 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }).join('');
 
   const sectionLinks = document.getElementById('catalogSections');
-  if (!section && !search.value.trim()) {
-    sectionLinks.innerHTML = CATEGORIES.map(item => `
-      <article class="catalog-section">
-        <a class="catalog-section-title" href="${catalogUrl(item.id)}">
-          <img src="${SECTIONS[item.id].image}" alt="">
-          <strong>${item.name}</strong><span aria-hidden="true">→</span>
-        </a>
-        <div>${Object.entries(SECTIONS[item.id].types).map(([key, name]) =>
-          `<a href="${catalogUrl(item.id, key)}">${name}</a>`).join('')}</div>
-      </article>`).join('');
-  } else if (section) {
+  if (section && !type) {
     sectionLinks.classList.add('catalog-types');
     sectionLinks.innerHTML = Object.entries(section.types).map(([key, name]) =>
       `<a href="${catalogUrl(category.id, key)}"${key === type ? ' aria-current="page"' : ''}>${name}</a>`

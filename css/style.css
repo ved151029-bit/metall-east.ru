@@ -353,11 +353,6 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
 .catalog-results .page-head p { margin-top: 6px; }
 .catalog-sections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; margin-bottom: 20px; }
 .catalog-sections:empty { display: none; }
-.catalog-section { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; }
-.catalog-section-title { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; align-items: center; gap: 9px; font-size: 14px; line-height: 1.25; }
-.catalog-section-title img { width: 52px; height: 48px; object-fit: cover; border-radius: 4px; }
-.catalog-section > div { display: flex; flex-wrap: wrap; column-gap: 11px; row-gap: 4px; padding-top: 8px; color: var(--muted); font-size: 12px; }
-.catalog-section a:hover { color: var(--text); text-decoration: underline; }
 .catalog-types { display: flex; flex-wrap: wrap; }
 .catalog-types a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 5px; font-size: 13px; }
 .catalog-types a:hover { border-color: var(--card-hover-border); }
@@ -384,7 +379,6 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
 
 @media (max-width: 1020px) {
   .catalog-layout { grid-template-columns: 195px minmax(0, 1fr); }
-  .catalog-sections:not(.catalog-types) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 750px) {
   .catalog-layout { grid-template-columns: minmax(0, 1fr); }
@@ -392,9 +386,6 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
   .filters { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 540px) {
-  .catalog-section-title { grid-template-columns: 37px minmax(0, 1fr); }
-  .catalog-section-title img { width: 37px; height: 37px; }
-  .catalog-section-title span { display: none; }
   .catalog-list .product-card { grid-template-columns: 82px minmax(0, 1fr); }
   .catalog-list .p-body { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 10px; }
   .catalog-list .p-foot { justify-content: space-between; }
@@ -417,4 +408,26 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
 }
 @media (max-width: 440px) {
   .tube-picker { grid-template-columns: minmax(0, 1fr); }
+}
+
+.catalog-layout[hidden] { display: none; }
+.catalog-overview-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 24px; }
+.catalog-overview-heading h1 { font-size: clamp(34px, 4vw, 54px); line-height: 1.05; }
+.catalog-overview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.catalog-category { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 14px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+.catalog-category:hover { border-color: var(--card-hover-border); }
+.catalog-category h2 { font-size: 19px; line-height: 1.25; }
+.catalog-category-content p { margin: 5px 0 13px; color: var(--muted); font-size: 12px; }
+.catalog-category ul { display: grid; gap: 7px; font-size: 14px; color: var(--muted); }
+.catalog-category a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.catalog-category-photo img { width: clamp(62px, 7vw, 96px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 1px solid var(--line); }
+.catalog-size-link { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: 18px; padding: 18px 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg2); }
+.catalog-size-link:hover { border-color: var(--card-hover-border); }
+.catalog-size-link small { display: block; margin-top: 5px; color: var(--muted); }
+@media (max-width: 1020px) { .catalog-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) {
+  .catalog-overview-grid { grid-template-columns: minmax(0, 1fr); }
+  .catalog-category { padding: 18px; }
+  .catalog-category-photo img { width: 76px; }
+  .catalog-overview-heading .btn { padding: 8px 11px; }
 }
