@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог — МЕТАЛЛ-ИСТ</title>
+<meta name="description" content="Каталог нержавеющего металлопроката: трубы, листы, фитинги, краны, фланцы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="page catalog-page">
+  <div class="container">
+    <nav class="catalog-crumbs" aria-label="Путь к разделу">
+      <a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="catalog.html">Каталог</a><span id="catalogPath"></span>
+    </nav>
+    <div class="catalog-layout">
+      <aside class="catalog-sidebar">
+        <nav class="category-menu" aria-label="Разделы каталога">
+          <h2>Наш ассортимент</h2>
+          <div id="catalogNav"></div>
+        </nav>
+        <section class="filters" aria-labelledby="filterTitle">
+          <h2 id="filterTitle">Подбор продукции</h2>
+          <label for="search">Название, размер или стандарт</label>
+          <input id="search" type="search" placeholder="Например, 57×3,5">
+          <label for="grade">Марка стали</label>
+          <select id="grade"><option value="">Все марки</option></select>
+          <label for="stock">Наличие</label>
+          <select id="stock">
+            <option value="">Любое</option>
+            <option value="на складе">На складе</option>
+            <option value="под заказ">Под заказ</option>
+          </select>
+          <button class="btn btn-ghost" id="resetFilters" type="button">Сбросить фильтры</button>
+        </section>
+      </aside>
+      <section class="catalog-results" aria-labelledby="catalogTitle">
+        <div class="page-head">
+          <h1 id="catalogTitle">Каталог нержавеющей стали</h1>
+          <p>Цены указаны с НДС.</p>
+        </div>
+        <div class="catalog-sections" id="catalogSections"></div>
+        <div class="catalog-toolbar">
+          <p id="resultCount" role="status"></p>
+          <div class="catalog-controls">
+            <label for="sort">Сортировка</label>
+            <select id="sort">
+              <option value="">По каталогу</option>
+              <option value="name">По названию</option>
+              <option value="price-up">Цена за единицу ↑</option>
+              <option value="price-down">Цена за единицу ↓</option>
+            </select>
+            <div class="catalog-view" role="group" aria-label="Вид каталога">
+              <button type="button" data-view="list" aria-pressed="true">Список</button>
+              <button type="button" data-view="grid" aria-pressed="false">Плитка</button>
+            </div>
+          </div>
+        </div>
+        <div class="products-grid catalog-list" id="productsGrid"></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script src="js/catalog.js"></script>
+</body>
+</html>

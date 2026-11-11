@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты — МЕТАЛЛ-ИСТ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="page">
+  <div class="container">
+    <div class="page-head">
+      <div class="eyebrow">Контакты</div>
+      <h1>Свяжитесь с нами</h1>
+      <p>Для расчёта пришлите спецификацию на почту.</p>
+    </div>
+    <div class="contacts-grid">
+      <div>
+        <div class="contact-block">
+          <h3>Телефон</h3>
+          <a href="tel:+74993993501">+7 (499) 399-35-01</a>
+          <p style="color:var(--muted);font-size:13px;font-weight:500;margin-top:6px">Пн–Пт с 9:00 до 18:00</p>
+        </div>
+        <div class="contact-block">
+          <h3>Почта</h3>
+          <a href="mailto:ag@metall-east.ru">ag@metall-east.ru</a>
+        </div>
+        <div class="contact-block">
+          <h3>Адрес</h3>
+          <p>г. Москва, Чермянский пр-д, д. 7</p>
+          <p style="color:var(--muted);font-size:13px;font-weight:500;margin-top:6px">Самовывоз со склада — ежедневно 9:00–18:00</p>
+        </div>
+        <div class="contact-block">
+          <h3>Реквизиты</h3>
+          <div class="requisites">
+            ООО «МЕТАЛЛ-ИСТ»<br>
+            ИНН 7704429127 · КПП 771501001<br>
+            ОГРН 1177746634515
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3>Написать нам</h3>
+        <p>Укажите размеры, марку стали и количество.</p>
+        <form id="contactForm">
+          <div class="field"><input type="text" name="name" placeholder="Ваше имя" required></div>
+          <div class="field"><input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
+          <div class="field"><textarea name="msg" rows="5" placeholder="Ваш вопрос или спецификация"></textarea></div>
+          <button type="submit" class="btn btn-blue" style="width:100%;justify-content:center">Открыть письмо</button>
+          <p class="form-note">Откроется черновик письма. Отправьте его из почтового приложения на ag@metall-east.ru.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
