@@ -129,8 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         (!stock.value || product.stock === stock.value);
     });
     if (sort.value === 'name') products.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
-    if (sort.value === 'price-up') products.sort((a, b) => a.price - b.price);
-    if (sort.value === 'price-down') products.sort((a, b) => b.price - a.price);
 
     document.getElementById('resultCount').textContent = 'Позиций: ' + products.length;
     grid.innerHTML = products.map(product => `
@@ -146,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="catalog-stock">${product.stock}</p>
           </div>
           <div class="p-foot">
-            <span class="p-price">${priceFmt(product.price)} <small>/ ${product.unit}</small></span>
+            <span class="p-price">Цена по запросу</span>
             <button class="btn btn-blue" type="button" data-add="${product.id}" aria-label="В корзину: ${product.name}">В корзину</button>
           </div>
         </div>

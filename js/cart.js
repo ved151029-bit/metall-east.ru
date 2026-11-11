@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div>
           <a class="ci-name" href="product.html?id=${p.id}">${p.name}</a>
           <p class="ci-spec">${p.spec}</p>
-          <p class="ci-price">${priceFmt(p.price)} / ${p.unit}</p>
+          <p class="ci-price">Цена по запросу</p>
           <button class="ci-remove" data-remove>Удалить</button>
         </div>
         <div class="ci-controls">
@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <input value="${q}" inputmode="numeric">
             <button type="button" data-q="1">+</button>
           </div>
-          <b style="white-space:nowrap">${priceFmt(p.price * q)}</b>
         </div>
       </div>`;
     });
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <h3>Итого</h3>
         <div class="sum-row"><span>Позиций</span><span>${positions}</span></div>
         <div class="sum-row"><span>Товаров</span><span>${Cart.count()} шт</span></div>
-        <div class="sum-row total"><span>Итого</span><span>${priceFmt(Cart.total())}</span></div>
+        <div class="sum-row total"><span>Стоимость заказа</span><span>По запросу</span></div>
         <form id="checkoutForm" style="margin-top:18px">
           <div class="field"><input type="text" name="name" placeholder="Ваше имя / компания" required></div>
           <div class="field"><input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>

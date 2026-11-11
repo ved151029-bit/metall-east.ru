@@ -8,7 +8,6 @@ const Cart = {
   remove(id){ const c = this.get(); delete c[id]; this.set(c); },
   clear(){ this.set({}); },
   count(){ return Object.values(this.get()).reduce((a, b) => a + b, 0); },
-  total(){ const c = this.get(); return Object.entries(c).reduce((sum, [id, q]) => { const p = PRODUCTS.find(x => x.id == id); return p ? sum + p.price * q : sum; }, 0); }
 };
 
 function updateCartBadge(){
@@ -25,8 +24,6 @@ function showToast(msg){
   requestAnimationFrame(() => t.classList.add('show'));
   setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 2200);
 }
-
-function priceFmt(n){ return n.toLocaleString('ru-RU') + ' ₽'; }
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCartBadge();

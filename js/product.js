@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <tr><td>Доставка</td><td>по Москве — от 1 дня, по РФ — от 3 дней</td></tr>
         </table>
         <div class="buy-row">
-          <span class="product-price">${priceFmt(p.price)} <small>/ ${p.unit}</small></span>
+          <span class="product-price">Цена по запросу</span>
           <div class="qty">
             <button type="button" data-q="-1">−</button>
             <input id="qty" value="1" inputmode="numeric">
