@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Размеры нержавеющих труб — МЕТАЛЛ-ИСТ</title>
+<meta name="description" content="Справочник размеров нержавеющих труб по DIN 11850, ISO 2037 и ГОСТ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="page tube-reference">
+  <div class="container">
+    <nav class="catalog-crumbs" aria-label="Путь к разделу">
+      <a href="catalog.html">Каталог</a><span aria-hidden="true">/</span>
+      <a href="catalog.html?cat=truby">Трубы</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Размеры по стандартам</span>
+    </nav>
+    <div class="page-head">
+      <h1>Размеры нержавеющих труб</h1>
+      <p>Выберите стандарт, наружный диаметр и толщину стенки. Марку стали, длину, цену и наличие уточним по запросу.</p>
+    </div>
+    <div class="filters tube-picker">
+      <label>Стандарт
+        <select id="tubeStandard"></select>
+      </label>
+      <label>Наружный диаметр, мм
+        <select id="tubeDiameter"></select>
+      </label>
+      <label>Толщина стенки, мм
+        <select id="tubeWall"></select>
+      </label>
+      <button class="btn btn-blue" type="button" id="tubeRequest" data-modal disabled>Запросить КП</button>
+    </div>
+    <p class="tube-reference-source"><a id="tubeSource" target="_blank" rel="noopener">Источник размеров ↗</a></p>
+    <table class="spec-table tube-reference-table">
+      <caption id="tubeCaption"></caption>
+      <thead><tr><th scope="col">Наружный диаметр, мм</th><th scope="col">Толщины стенки, мм</th></tr></thead>
+      <tbody id="tubeRows"></tbody>
+    </table>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script src="js/tube-sizes-data.js"></script>
+<script src="js/tube-sizes.js"></script>
+</body>
+</html>

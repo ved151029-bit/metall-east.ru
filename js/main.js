@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('modal');
   if (modal){
     document.addEventListener('click', event => {
-      if (!event.target.closest('[data-modal]')) return;
+      const trigger = event.target.closest('[data-modal]');
+      if (!trigger) return;
+      if (trigger.dataset.request) modal.querySelector('[name=msg]').value = trigger.dataset.request;
       event.preventDefault();
       modal.classList.add('open');
       modal.querySelector('input').focus();

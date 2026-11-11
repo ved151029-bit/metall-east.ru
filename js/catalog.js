@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(location.search);
   const category = CATEGORIES.find(item => item.id === params.get('cat'));
   const section = category ? SECTIONS[category.id] : null;
+  document.getElementById('tubeReferenceLink').hidden = Boolean(category && category.id !== 'truby');
   const requestedType = params.get('type');
   const type = section && Object.hasOwn(section.types, requestedType) ? requestedType : null;
   const sectionProducts = PRODUCTS.filter(product =>
