@@ -16,7 +16,7 @@ const HEADER_HTML = `
       <input name="q" type="search" aria-label="Поиск по каталогу" placeholder="Поиск по каталогу">
       <button type="submit">Найти</button>
     </form>
-    <a class="sales-phone" href="tel:+74993993501">+7 (499) 399-35-01</a>
+    <a class="sales-phone" href="tel:+79661528800">+7 (966) 152-88-00</a>
     <a class="cart-link" href="cart.html" aria-label="Корзина">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3h2l2.6 12.4a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10.5" cy="20.5" r="1.5" fill="currentColor"/><circle cx="17.5" cy="20.5" r="1.5" fill="currentColor"/></svg>
       <span class="cart-label">Корзина</span><span class="cart-count"></span>
@@ -37,7 +37,7 @@ const FOOTER_HTML = `
     <div class="footer-grid">
       <div class="footer-about">
         ${BRAND}
-        <p>Комплексные поставки нержавеющего металлопроката, трубопроводной арматуры и комплектующих стандарта DIN, SMS, ГОСТ.</p>
+        <p>Комплексные поставки нержавеющего металлопроката, трубопроводной арматуры и комплектующих стандарта DIN, ISO, SMS, ГОСТ.</p>
       </div>
       <div>
         <h4>Каталог</h4>
@@ -56,7 +56,6 @@ const FOOTER_HTML = `
       </div>
       <div>
         <h4>Контакты</h4>
-        <a href="tel:+74993993501" style="font-weight:700;">+7 (499) 399-35-01</a>
         <a href="tel:+79661528800">+7 (966) 152-88-00</a>
         <a href="mailto:ag@metall-east.ru" style="color:var(--accent);">ag@metall-east.ru</a>
         <div class="requisites" style="margin-top:10px;line-height:1.5;font-size:12px;color:var(--muted);">
@@ -68,7 +67,7 @@ const FOOTER_HTML = `
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 ООО «МЕТАЛЛ-ИСТ» (METALL EAST). Все права защищены.</span>
+      <span>© 2017 ООО «МЕТАЛЛ-ИСТ» (METALL-EAST). Все права защищены.</span>
     </div>
   </div>
 </footer>`;
