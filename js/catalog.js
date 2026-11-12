@@ -121,6 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const children = active ? Object.entries(SECTIONS[item.id].types).map(([key, name]) =>
       `<a class="catalog-subnav" href="${catalogUrl(item.id, key)}"${key === type ? ' aria-current="page"' : ''}>${name}</a>`
     ).join('') : '';
+    if (active && item.id === 'flantsy') {
+      return `<details class="catalog-nav-folder" open>
+        <summary>Фланцы <span aria-hidden="true">›</span></summary>
+        ${type ? '<a class="catalog-subnav" href="catalog.html?cat=flantsy">Все подразделы</a>' : ''}
+        ${children}
+      </details>`;
+    }
     return `<a href="${catalogUrl(item.id)}"${active && !type ? ' aria-current="page"' : ''}>${item.name}<span aria-hidden="true">›</span></a>${children}`;
   }).join('');
 

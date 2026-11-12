@@ -451,3 +451,21 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
 .catalog-folder:hover, .catalog-folder:focus-visible { border-color: var(--card-hover-border); }
 .catalog-folder svg, .catalog-folder span { color: var(--muted); }
 .catalog-folder strong { font-size: 14px; line-height: 1.35; }
+
+.catalog-nav-folder summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 17px;
+  border-top: 1px solid var(--line);
+  background: #383838;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+.catalog-nav-folder summary::-webkit-details-marker { display: none; }
+.catalog-nav-folder summary:hover { background: #444; }
+.catalog-nav-folder summary span { color: var(--muted); }
+.catalog-nav-folder[open] summary span { transform: rotate(90deg); }
