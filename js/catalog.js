@@ -17,7 +17,6 @@ const SECTIONS = {
       reducers: 'Переходы',
       'milk-union': 'Молочная муфта',
       'eccentric-reducers': 'Переход эксцентрический',
-      'reducing-tees': 'Тройник переходной',
     },
   },
   krany: {
@@ -98,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const section = category ? SECTIONS[category.id] : null;
   document.getElementById('tubeReferenceLink').hidden = Boolean(category && category.id !== 'truby');
-  const requestedType = params.get('type');
+  const typeParam = params.get('type');
+  const requestedType = category?.id === 'fitingi' && typeParam === 'reducing-tees' ? 'tees' : typeParam;
   const legacyFlangeTypes = { flat: 'flat-gost', 'weld-neck': 'weld-neck-gost' };
   const selectedType = category?.id === 'flantsy' && Object.hasOwn(legacyFlangeTypes, requestedType)
     ? legacyFlangeTypes[requestedType]
