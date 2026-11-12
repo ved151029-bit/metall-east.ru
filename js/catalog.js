@@ -9,8 +9,16 @@ const SECTIONS = {
     types: { mirror: 'Зеркальные листы', matte: 'Матовые листы', 'hot-rolled': 'Горячекатаные листы' },
   },
   fitingi: {
+    foldersOnly: true,
     image: 'img/cat-fittings.png',
-    types: { elbows: 'Отводы', tees: 'Тройники', reducers: 'Переходы' },
+    types: {
+      elbows: 'Отводы',
+      tees: 'Тройники',
+      reducers: 'Переходы',
+      'milk-union': 'Молочная муфта',
+      'eccentric-reducers': 'Переход эксцентрический',
+      'reducing-tees': 'Тройник переходной',
+    },
   },
   krany: {
     image: 'img/cat-valves.jpg',
@@ -176,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const grades = [...new Set(sectionProducts.map(steelGrade).filter(Boolean))].sort();
   grades.forEach(value => grade.add(new Option(value, value)));
 
-  const emptyMessage = category?.id === 'flantsy' && type && !sectionProducts.length
+  const emptyMessage = section?.foldersOnly && type && !sectionProducts.length
     ? `<div class="empty"><p>Уточните размер, цену и наличие.</p>
         <button type="button" class="btn btn-ghost" data-modal data-request="${title}">Запросить КП</button></div>`
     : '<p class="empty">По выбранным параметрам ничего не найдено.</p>';
