@@ -45,7 +45,7 @@ const FOOTER_HTML = `
         <a href="catalog.html?cat=listy">Листы нержавеющие</a>
         <a href="catalog.html?cat=fitingi">Фитинги и соединения</a>
         <a href="catalog.html?cat=krany">Краны и арматура</a>
-        <a href="catalog.html?cat=flantsy">Фланцы и детали</a>
+        <a href="catalog.html?cat=flantsy">Фланцы</a>
       </div>
       <div>
         <h4>Компания</h4>

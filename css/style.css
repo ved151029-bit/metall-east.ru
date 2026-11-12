@@ -431,3 +431,23 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
   .catalog-category-photo img { width: 76px; }
   .catalog-overview-heading .btn { padding: 8px 11px; }
 }
+
+.catalog-folders-only .filters,
+.catalog-folders-only .catalog-toolbar,
+.catalog-folders-only .products-grid { display: none; }
+
+.catalog-folders.catalog-overview-grid { gap: 12px; }
+.catalog-folder {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 88px;
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.catalog-folder:hover, .catalog-folder:focus-visible { border-color: var(--card-hover-border); }
+.catalog-folder svg, .catalog-folder span { color: var(--muted); }
+.catalog-folder strong { font-size: 14px; line-height: 1.35; }

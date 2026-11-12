@@ -4,7 +4,7 @@ const CATEGORIES = [
   {id:'listy',   name:'Листы нержавеющие'},
   {id:'fitingi', name:'Фитинги и соединения'},
   {id:'krany',   name:'Краны и арматура'},
-  {id:'flantsy', name:'Фланцы и детали трубопровода'},
+  {id:'flantsy', name:'Фланцы'},
 ];
 
 const PRODUCTS = [

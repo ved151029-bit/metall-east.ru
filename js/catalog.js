@@ -62,10 +62,10 @@ function renderCatalogOverview() {
       <article class="catalog-category">
         <div class="catalog-category-content">
           <h2><a href="${catalogUrl(id)}">${name}</a></h2>
-          <p>${number.format(count)} ${countLabels[plural.select(count)]}</p>
-          <ul>${Object.entries(section.types).map(([key, title]) =>
+          <p>${id === 'flantsy' ? Object.keys(section.types).length + ' подразделов' : number.format(count) + ' ' + countLabels[plural.select(count)]}</p>
+          ${id === 'flantsy' ? '' : `<ul>${Object.entries(section.types).map(([key, title]) =>
             `<li><a href="${catalogUrl(id, key)}">${title}</a></li>`
-          ).join('')}</ul>
+          ).join('')}</ul>`}
         </div>
         <a class="catalog-category-photo" href="${catalogUrl(id)}" aria-label="${name}">
           <img src="${section.image}" alt="" width="96" height="96">
@@ -125,6 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }).join('');
 
   const sectionLinks = document.getElementById('catalogSections');
+  if (category?.id === 'flantsy' && !type) {
+    document.getElementById('catalogListing').classList.add('catalog-folders-only');
+    sectionLinks.classList.add('catalog-overview-grid', 'catalog-folders');
+    sectionLinks.innerHTML = Object.entries(section.types).map(([key, name]) =>
+      `<a class="catalog-folder" href="${catalogUrl(category.id, key)}">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M3 6h6l2 2h10v11H3z" stroke-linejoin="round"/>
+        </svg>
+        <strong>${name}</strong><span aria-hidden="true">→</span>
+      </a>`
+    ).join('');
+    return;
+  }
   if (section && !type) {
     sectionLinks.classList.add('catalog-types');
     sectionLinks.innerHTML = Object.entries(section.types).map(([key, name]) =>
