@@ -17,7 +17,18 @@ const SECTIONS = {
   },
   flantsy: {
     image: 'img/cat-flanges.jpg',
-    types: { flat: 'Плоские фланцы', 'weld-neck': 'Воротниковые фланцы' },
+    types: {
+      'flat-din': 'Фланец плоский DIN',
+      'weld-neck-din': 'Фланец воротниковый DIN',
+      'flat-iso': 'Фланец плоский ISO',
+      'weld-neck-iso': 'Фланец воротниковый ISO',
+      'flat-gost': 'Фланец плоский ГОСТ',
+      'weld-neck-gost': 'Фланец воротниковый ГОСТ',
+      'loose-aluminium': 'Фланец свободный алюминиевый',
+      'loose-stainless': 'Фланец свободный нержавеющий',
+      'stub-end': 'Бортшайба',
+      gasket: 'Уплотнение фланцевого соединения',
+    },
   },
 };
 
@@ -76,7 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const section = category ? SECTIONS[category.id] : null;
   document.getElementById('tubeReferenceLink').hidden = Boolean(category && category.id !== 'truby');
   const requestedType = params.get('type');
-  const type = section && Object.hasOwn(section.types, requestedType) ? requestedType : null;
+  const legacyFlangeTypes = { flat: 'flat-gost', 'weld-neck': 'weld-neck-gost' };
+  const selectedType = category?.id === 'flantsy' && Object.hasOwn(legacyFlangeTypes, requestedType)
+    ? legacyFlangeTypes[requestedType]
+    : requestedType;
+  const type = section && Object.hasOwn(section.types, selectedType) ? selectedType : null;
   const sectionProducts = PRODUCTS.filter(product =>
     (!category || product.cat === category.id) && (!type || product.type === type)
   );
@@ -120,6 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const grades = [...new Set(sectionProducts.map(steelGrade).filter(Boolean))].sort();
   grades.forEach(value => grade.add(new Option(value, value)));
 
+  const emptyMessage = category?.id === 'flantsy' && type && !sectionProducts.length
+    ? `<div class="empty"><p>Уточните размер, цену и наличие.</p>
+        <button type="button" class="btn btn-ghost" data-modal data-request="${title}">Запросить КП</button></div>`
+    : '<p class="empty">По выбранным параметрам ничего не найдено.</p>';
+
   function render() {
     const words = normalizeCatalogSearch(search.value).split(/\s+/).filter(Boolean);
     const products = sectionProducts.filter(product => {
@@ -148,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="btn btn-blue" type="button" data-add="${product.id}" aria-label="В корзину: ${product.name}">В корзину</button>
           </div>
         </div>
-      </article>`).join('') || '<p class="empty">По выбранным параметрам ничего не найдено.</p>';
+      </article>`).join('') || emptyMessage;
   }
 
   search.addEventListener('input', render);
