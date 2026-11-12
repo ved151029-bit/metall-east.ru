@@ -123,10 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const children = Object.entries(SECTIONS[item.id].types).map(([key, name]) =>
       `<a class="catalog-subnav" href="${catalogUrl(item.id, key)}"${active && key === type ? ' aria-current="page"' : ''}>${name}</a>`
     ).join('');
-    const parentLink = !active || type
+    const parentLink = item.id !== 'flantsy' && (!active || type)
       ? `<a class="catalog-subnav" href="${catalogUrl(item.id)}">Все подразделы</a>`
       : '';
-    return `<button type="button" class="catalog-nav-toggle${active ? ' is-current' : ''}" aria-expanded="${active}" aria-controls="${panelId}">
+    return `<button type="button" class="catalog-nav-toggle${active ? ' is-current' : ''}" aria-expanded="${active}" aria-controls="${panelId}"${item.id === 'flantsy' && (!active || type) ? ` data-section-url="${catalogUrl(item.id)}"` : ''}>
       ${item.name} <span aria-hidden="true">›</span>
     </button>
     <div class="catalog-nav-subfolders" id="${panelId}"${active ? '' : ' hidden'}>
@@ -138,6 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
   catalogNav.querySelectorAll('.catalog-nav-toggle').forEach(button => {
     const subfolders = document.getElementById(button.getAttribute('aria-controls'));
     button.addEventListener('click', () => {
+      if (button.dataset.sectionUrl) {
+        location.assign(button.dataset.sectionUrl);
+        return;
+      }
       subfolders.hidden = !subfolders.hidden;
       button.setAttribute('aria-expanded', String(!subfolders.hidden));
     });
