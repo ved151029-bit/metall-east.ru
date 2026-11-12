@@ -1,7 +1,8 @@
 const SECTIONS = {
   truby: {
+    foldersOnly: true,
     image: 'img/cat-pipes.jpg',
-    types: { welded: 'Сварные трубы', seamless: 'Бесшовные трубы', profile: 'Профильные трубы' },
+    types: { welded: 'Труба круглая электросварная', seamless: 'Труба бесшовная', profile: 'Труба профильная' },
   },
   listy: {
     image: 'img/cat-sheets.jpg',
@@ -16,6 +17,7 @@ const SECTIONS = {
     types: { 'ball-valves': 'Шаровые краны', 'gate-valves': 'Задвижки' },
   },
   flantsy: {
+    foldersOnly: true,
     image: 'img/cat-flanges.jpg',
     types: {
       'flat-din': 'Фланец плоский DIN',
@@ -51,19 +53,21 @@ function renderCatalogOverview() {
   const order = ['krany', 'fitingi', 'flantsy', 'truby', 'listy'];
   const number = new Intl.NumberFormat('ru-RU');
   const plural = new Intl.PluralRules('ru');
+  const folderLabels = { one: 'подраздел', few: 'подраздела', many: 'подразделов', other: 'подразделов' };
   const countLabels = { one: 'позиция', few: 'позиции', many: 'позиций', other: 'позиций' };
 
   document.getElementById('catalogOverviewGrid').innerHTML = order.map(id => {
     const category = CATEGORIES.find(item => item.id === id);
     const section = SECTIONS[id];
     const count = PRODUCTS.filter(product => product.cat === id).length;
+    const folderCount = Object.keys(section.types).length;
     const name = id === 'krany' ? 'Трубопроводная арматура' : category.name;
     return `
       <article class="catalog-category">
         <div class="catalog-category-content">
           <h2><a href="${catalogUrl(id)}">${name}</a></h2>
-          <p>${id === 'flantsy' ? Object.keys(section.types).length + ' подразделов' : number.format(count) + ' ' + countLabels[plural.select(count)]}</p>
-          ${id === 'flantsy' ? '' : `<ul>${Object.entries(section.types).map(([key, title]) =>
+          <p>${section.foldersOnly ? number.format(folderCount) + ' ' + folderLabels[plural.select(folderCount)] : number.format(count) + ' ' + countLabels[plural.select(count)]}</p>
+          ${section.foldersOnly ? '' : `<ul>${Object.entries(section.types).map(([key, title]) =>
             `<li><a href="${catalogUrl(id, key)}">${title}</a></li>`
           ).join('')}</ul>`}
         </div>
@@ -120,13 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
   catalogNav.innerHTML = CATEGORIES.map(item => {
     const active = item.id === category?.id;
     const panelId = `catalog-subfolders-${item.id}`;
-    const children = Object.entries(SECTIONS[item.id].types).map(([key, name]) =>
+    const itemSection = SECTIONS[item.id];
+    const children = Object.entries(itemSection.types).map(([key, name]) =>
       `<a class="catalog-subnav" href="${catalogUrl(item.id, key)}"${active && key === type ? ' aria-current="page"' : ''}>${name}</a>`
     ).join('');
-    const parentLink = item.id !== 'flantsy' && (!active || type)
+    const parentLink = !itemSection.foldersOnly && (!active || type)
       ? `<a class="catalog-subnav" href="${catalogUrl(item.id)}">Все подразделы</a>`
       : '';
-    return `<button type="button" class="catalog-nav-toggle${active ? ' is-current' : ''}" aria-expanded="${active}" aria-controls="${panelId}"${item.id === 'flantsy' && (!active || type) ? ` data-section-url="${catalogUrl(item.id)}"` : ''}>
+    return `<button type="button" class="catalog-nav-toggle${active ? ' is-current' : ''}" aria-expanded="${active}" aria-controls="${panelId}"${itemSection.foldersOnly && (!active || type) ? ` data-section-url="${catalogUrl(item.id)}"` : ''}>
       ${item.name} <span aria-hidden="true">›</span>
     </button>
     <div class="catalog-nav-subfolders" id="${panelId}"${active ? '' : ' hidden'}>
@@ -148,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const sectionLinks = document.getElementById('catalogSections');
-  if (category?.id === 'flantsy' && !type) {
+  if (section?.foldersOnly && !type) {
     document.getElementById('catalogListing').classList.add('catalog-folders-only');
     sectionLinks.classList.add('catalog-overview-grid', 'catalog-folders');
     sectionLinks.innerHTML = Object.entries(section.types).map(([key, name]) =>
