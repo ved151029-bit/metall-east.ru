@@ -452,20 +452,24 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
 .catalog-folder svg, .catalog-folder span { color: var(--muted); }
 .catalog-folder strong { font-size: 14px; line-height: 1.35; }
 
-.catalog-nav-folder summary {
+.catalog-nav-toggle {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+  width: 100%;
   padding: 15px 17px;
+  border: 0;
   border-top: 1px solid var(--line);
   background: #383838;
+  color: inherit;
+  font: inherit;
   font-size: 14px;
   font-weight: 800;
+  text-align: left;
   cursor: pointer;
-  list-style: none;
 }
-.catalog-nav-folder summary::-webkit-details-marker { display: none; }
-.catalog-nav-folder summary:hover { background: #444; }
-.catalog-nav-folder summary span { color: var(--muted); }
-.catalog-nav-folder[open] summary span { transform: rotate(90deg); }
+.catalog-nav-toggle:hover { background: #444; }
+.catalog-nav-toggle span { color: var(--muted); }
+.catalog-nav-toggle[aria-expanded="true"] span { transform: rotate(90deg); }
+#flangeSubfolders[hidden] { display: none; }

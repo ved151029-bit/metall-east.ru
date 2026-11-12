@@ -122,14 +122,23 @@ document.addEventListener('DOMContentLoaded', () => {
       `<a class="catalog-subnav" href="${catalogUrl(item.id, key)}"${key === type ? ' aria-current="page"' : ''}>${name}</a>`
     ).join('') : '';
     if (active && item.id === 'flantsy') {
-      return `<details class="catalog-nav-folder" open>
-        <summary>Фланцы <span aria-hidden="true">›</span></summary>
+      return `<button type="button" class="catalog-nav-toggle" id="flangeToggle" aria-expanded="true" aria-controls="flangeSubfolders">
+        Фланцы <span aria-hidden="true">›</span>
+      </button>
+      <div id="flangeSubfolders">
         ${type ? '<a class="catalog-subnav" href="catalog.html?cat=flantsy">Все подразделы</a>' : ''}
         ${children}
-      </details>`;
+      </div>`;
     }
     return `<a href="${catalogUrl(item.id)}"${active && !type ? ' aria-current="page"' : ''}>${item.name}<span aria-hidden="true">›</span></a>${children}`;
   }).join('');
+
+  const flangeToggle = document.getElementById('flangeToggle');
+  flangeToggle?.addEventListener('click', () => {
+    const subfolders = document.getElementById('flangeSubfolders');
+    subfolders.hidden = !subfolders.hidden;
+    flangeToggle.setAttribute('aria-expanded', String(!subfolders.hidden));
+  });
 
   const sectionLinks = document.getElementById('catalogSections');
   if (category?.id === 'flantsy' && !type) {
