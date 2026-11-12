@@ -116,28 +116,31 @@ document.addEventListener('DOMContentLoaded', () => {
     document.title = title + ' — МЕТАЛЛ-ИСТ';
   }
 
-  document.getElementById('catalogNav').innerHTML = CATEGORIES.map(item => {
+  const catalogNav = document.getElementById('catalogNav');
+  catalogNav.innerHTML = CATEGORIES.map(item => {
     const active = item.id === category?.id;
-    const children = active ? Object.entries(SECTIONS[item.id].types).map(([key, name]) =>
-      `<a class="catalog-subnav" href="${catalogUrl(item.id, key)}"${key === type ? ' aria-current="page"' : ''}>${name}</a>`
-    ).join('') : '';
-    if (active && item.id === 'flantsy') {
-      return `<button type="button" class="catalog-nav-toggle" id="flangeToggle" aria-expanded="true" aria-controls="flangeSubfolders">
-        Фланцы <span aria-hidden="true">›</span>
-      </button>
-      <div id="flangeSubfolders">
-        ${type ? '<a class="catalog-subnav" href="catalog.html?cat=flantsy">Все подразделы</a>' : ''}
-        ${children}
-      </div>`;
-    }
-    return `<a href="${catalogUrl(item.id)}"${active && !type ? ' aria-current="page"' : ''}>${item.name}<span aria-hidden="true">›</span></a>${children}`;
+    const panelId = `catalog-subfolders-${item.id}`;
+    const children = Object.entries(SECTIONS[item.id].types).map(([key, name]) =>
+      `<a class="catalog-subnav" href="${catalogUrl(item.id, key)}"${active && key === type ? ' aria-current="page"' : ''}>${name}</a>`
+    ).join('');
+    const parentLink = !active || type
+      ? `<a class="catalog-subnav" href="${catalogUrl(item.id)}">Все подразделы</a>`
+      : '';
+    return `<button type="button" class="catalog-nav-toggle${active ? ' is-current' : ''}" aria-expanded="${active}" aria-controls="${panelId}">
+      ${item.name} <span aria-hidden="true">›</span>
+    </button>
+    <div class="catalog-nav-subfolders" id="${panelId}"${active ? '' : ' hidden'}>
+      ${parentLink}
+      ${children}
+    </div>`;
   }).join('');
 
-  const flangeToggle = document.getElementById('flangeToggle');
-  flangeToggle?.addEventListener('click', () => {
-    const subfolders = document.getElementById('flangeSubfolders');
-    subfolders.hidden = !subfolders.hidden;
-    flangeToggle.setAttribute('aria-expanded', String(!subfolders.hidden));
+  catalogNav.querySelectorAll('.catalog-nav-toggle').forEach(button => {
+    const subfolders = document.getElementById(button.getAttribute('aria-controls'));
+    button.addEventListener('click', () => {
+      subfolders.hidden = !subfolders.hidden;
+      button.setAttribute('aria-expanded', String(!subfolders.hidden));
+    });
   });
 
   const sectionLinks = document.getElementById('catalogSections');

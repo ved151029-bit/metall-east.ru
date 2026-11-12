@@ -461,15 +461,16 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
   padding: 15px 17px;
   border: 0;
   border-top: 1px solid var(--line);
-  background: #383838;
+  background: transparent;
   color: inherit;
   font: inherit;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 500;
   text-align: left;
   cursor: pointer;
 }
+.catalog-nav-toggle.is-current { background: #383838; font-weight: 800; }
 .catalog-nav-toggle:hover { background: #444; }
 .catalog-nav-toggle span { color: var(--muted); }
 .catalog-nav-toggle[aria-expanded="true"] span { transform: rotate(90deg); }
-#flangeSubfolders[hidden] { display: none; }
+.catalog-nav-subfolders[hidden] { display: none; }
