@@ -7,6 +7,55 @@ const CATEGORIES = [
   {id:'flantsy', name:'Фланцы'},
 ];
 
+const SECTIONS = {
+  truby: {
+    foldersOnly: true,
+    image: 'img/cat-pipes.jpg',
+    types: { welded: 'Труба круглая электросварная', seamless: 'Труба бесшовная', profile: 'Труба профильная' },
+  },
+  listy: {
+    image: 'img/cat-sheets.jpg',
+    types: { mirror: 'Зеркальные листы', matte: 'Матовые листы', 'hot-rolled': 'Горячекатаные листы' },
+  },
+  fitingi: {
+    foldersOnly: true,
+    image: 'img/cat-fittings.png',
+    types: {
+      elbows: 'Отводы',
+      tees: 'Тройники',
+      reducers: 'Переходы',
+      'milk-union': 'Молочная муфта',
+      'eccentric-reducers': 'Переход эксцентрический',
+    },
+  },
+  krany: {
+    image: 'img/cat-valves.jpg',
+    types: { 'ball-valves': 'Шаровые краны', 'gate-valves': 'Задвижки' },
+  },
+  flantsy: {
+    foldersOnly: true,
+    image: 'img/cat-flanges.jpg',
+    types: {
+      'flat-din': 'Фланец плоский DIN',
+      'weld-neck-din': 'Фланец воротниковый DIN',
+      'flat-iso': 'Фланец плоский ISO',
+      'weld-neck-iso': 'Фланец воротниковый ISO',
+      'flat-gost': 'Фланец плоский ГОСТ',
+      'weld-neck-gost': 'Фланец воротниковый ГОСТ',
+      'loose-aluminium': 'Фланец свободный алюминиевый',
+      'loose-stainless': 'Фланец свободный нержавеющий',
+      'stub-end': 'Бортшайба',
+      gasket: 'Уплотнение фланцевого соединения',
+    },
+  },
+};
+
+function catalogUrl(category, type) {
+  const query = new URLSearchParams({ cat: category });
+  if (type) query.set('type', type);
+  return 'catalog.html?' + query;
+}
+
 const PRODUCTS = [
   {id:1, type:'seamless', cat:'truby', name:'Труба бесшовная 12Х18Н10Т', spec:'57×3,5 мм · ГОСТ 9941-81 · длина 6 м, холоднодеформированная', unit:'м', img:'img/cat-pipes.jpg', photo:true, stock:'на складе', desc:'Бесшовная холоднодеформированная труба из коррозионностойкой стали 12Х18Н10Т. Применяется в химической, пищевой промышленности, энергетике и машиностроении. Выдерживает температуры от -196 до +600 °C.'},
   {id:2, type:'welded', cat:'truby', name:'Труба электросварная AISI 304', spec:'76,1×2,0 мм · EN 10217-7 · матовая, длина 6 м', unit:'м', img:'img/hero-pipes.jpg', photo:true, stock:'на складе', desc:'Электросварная труба из нержавеющей стали AISI 304 (08Х18Н10). Универсальное решение для трубопроводов водоснабжения, отопления и технологических линий.'},

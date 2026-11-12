@@ -23,7 +23,22 @@ const HEADER_HTML = `
     </a>
   </div>
   <div class="nav-bar"><nav class="container nav-row" aria-label="Основное меню">
-    <a class="nav-catalog" href="catalog.html">Каталог</a>
+    <div class="nav-catalog-wrap">
+      <a class="nav-catalog" href="catalog.html" aria-controls="headerCatalog" aria-expanded="false">Каталог</a>
+      <div class="nav-catalog-panel" id="headerCatalog" hidden>
+        <div class="nav-catalog-grid">
+          ${CATEGORIES.map(category => `
+            <div class="nav-catalog-group">
+              <a class="nav-catalog-heading" href="${catalogUrl(category.id)}">${category.name}</a>
+              <ul>${Object.entries(SECTIONS[category.id].types).map(([type, title]) =>
+                `<li><a href="${catalogUrl(category.id, type)}">${title}</a></li>`
+              ).join('')}</ul>
+            </div>`
+          ).join('')}
+        </div>
+        <a class="nav-catalog-all" href="catalog.html">Весь каталог →</a>
+      </div>
+    </div>
     <a href="about.html">О компании</a>
     <a href="about.html#delivery">Доставка</a>
     <a href="contacts.html">Контакты</a>
@@ -98,5 +113,41 @@ const MODAL_HTML = `
 // ==========================================================================
 const headerEl = document.getElementById('site-header');
 const footerEl = document.getElementById('site-footer');
-if (headerEl) headerEl.innerHTML = HEADER_HTML;
+if (headerEl) {
+  headerEl.innerHTML = HEADER_HTML;
+  const menu = headerEl.querySelector('.nav-catalog-wrap');
+  const trigger = menu.querySelector('.nav-catalog');
+  const panel = menu.querySelector('.nav-catalog-panel');
+
+  function setCatalogOpen(open) {
+    panel.hidden = !open;
+    trigger.setAttribute('aria-expanded', String(open));
+  }
+
+  menu.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse') setCatalogOpen(true);
+  });
+  menu.addEventListener('pointerleave', event => {
+    if (event.pointerType === 'mouse' && !panel.contains(document.activeElement)) setCatalogOpen(false);
+  });
+  trigger.addEventListener('click', event => {
+    if (event.detail === 0 || !matchMedia('(hover: hover)').matches) {
+      event.preventDefault();
+      setCatalogOpen(panel.hidden);
+    }
+  });
+  menu.addEventListener('focusout', event => {
+    if (!menu.contains(event.relatedTarget) && !menu.matches(':hover')) setCatalogOpen(false);
+  });
+  menu.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !panel.hidden) {
+      event.preventDefault();
+      setCatalogOpen(false);
+      trigger.focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    if (!menu.contains(event.target)) setCatalogOpen(false);
+  });
+}
 if (footerEl) footerEl.innerHTML = FOOTER_HTML + MODAL_HTML;
