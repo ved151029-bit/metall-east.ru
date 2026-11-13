@@ -157,3 +157,32 @@ if (headerEl) {
   });
 }
 if (footerEl) footerEl.innerHTML = FOOTER_HTML + MODAL_HTML;
+
+const cookieNoticeKey = 'metall-east-cookie-notice-dismissed';
+let cookieNoticeDismissed = false;
+try {
+  cookieNoticeDismissed = localStorage.getItem(cookieNoticeKey) === 'yes';
+} catch {
+  // Show the notice when browser storage is unavailable.
+}
+
+if (!cookieNoticeDismissed) {
+  document.body.insertAdjacentHTML('beforeend', `
+    <aside class="cookie-notice" aria-label="Уведомление о хранении данных в браузере">
+      <button class="cookie-notice-close" type="button" aria-label="Закрыть уведомление">×</button>
+      <p>Для работы сайта используются локальное хранилище браузера, в котором сохраняется корзина.
+        Подробнее в <a href="privacy.html">Политике обработки персональных данных</a>.
+      </p>
+      <button class="cookie-notice-ok" type="button">Понятно</button>
+    </aside>`);
+  const notice = document.querySelector('.cookie-notice');
+  notice.addEventListener('click', event => {
+    if (!event.target.closest('button')) return;
+    try {
+      localStorage.setItem(cookieNoticeKey, 'yes');
+    } catch {
+      // The notice can still be closed on this page.
+    }
+    notice.remove();
+  });
+}

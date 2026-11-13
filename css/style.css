@@ -540,3 +540,43 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
   background: #151515;
   border-radius: 6px;
 }
+
+.cookie-notice {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 100;
+  width: min(340px, calc(100% - 24px));
+  padding: 24px 24px 20px;
+  border-radius: 8px;
+  background: #fff;
+  color: #171717;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.45;
+  box-shadow: 0 8px 30px #0005;
+}
+.cookie-notice a { color: #b92d16; text-decoration: underline; }
+.cookie-notice-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  cursor: pointer;
+}
+.cookie-notice-ok {
+  margin-top: 14px;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 24px;
+  background: #c63319;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
