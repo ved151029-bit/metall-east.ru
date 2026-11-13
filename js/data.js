@@ -3,7 +3,7 @@ const CATEGORIES = [
   {id:'truby',   name:'Трубы нержавеющие'},
   {id:'listy',   name:'Листы нержавеющие'},
   {id:'fitingi', name:'Фитинги и соединения'},
-  {id:'krany',   name:'Краны и арматура'},
+  {id:'krany',   name:'Запорная арматура'},
   {id:'flantsy', name:'Фланцы'},
 ];
 

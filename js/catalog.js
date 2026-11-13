@@ -19,7 +19,7 @@ function renderCatalogOverview() {
     const section = SECTIONS[id];
     const count = PRODUCTS.filter(product => product.cat === id).length;
     const folderCount = Object.keys(section.types).length;
-    const name = id === 'krany' ? 'Трубопроводная арматура' : category.name;
+    const name = category.name;
     return `
       <article class="catalog-category">
         <div class="catalog-category-content">

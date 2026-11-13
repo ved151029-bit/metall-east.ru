@@ -59,7 +59,7 @@ const FOOTER_HTML = `
         <a href="catalog.html?cat=truby">Трубы нержавеющие</a>
         <a href="catalog.html?cat=listy">Листы нержавеющие</a>
         <a href="catalog.html?cat=fitingi">Фитинги и соединения</a>
-        <a href="catalog.html?cat=krany">Краны и арматура</a>
+        <a href="catalog.html?cat=krany">Запорная арматура</a>
         <a href="catalog.html?cat=flantsy">Фланцы</a>
       </div>
       <div>
