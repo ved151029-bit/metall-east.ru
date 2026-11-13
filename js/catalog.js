@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const grades = [...new Set(sectionProducts.map(steelGrade).filter(Boolean))].sort();
   grades.forEach(value => grade.add(new Option(value, value)));
 
-  const emptyMessage = section?.foldersOnly && type && !sectionProducts.length
+  const emptyMessage = type && !sectionProducts.length
     ? `<div class="empty"><p>Уточните размер, цену и наличие.</p>
         <button type="button" class="btn btn-ghost" data-modal data-request="${title}">Запросить КП</button></div>`
     : '<p class="empty">По выбранным параметрам ничего не найдено.</p>';
