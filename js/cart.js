@@ -42,9 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="sum-row"><span>Позиций</span><span>${positions}</span></div>
         <div class="sum-row"><span>Товаров</span><span>${Cart.count()} шт</span></div>
         <div class="sum-row total"><span>Стоимость заказа</span><span>По запросу</span></div>
-        <form id="checkoutForm" style="margin-top:18px">
+        <form method="post" id="checkoutForm" style="margin-top:18px">
           <div class="field"><input type="text" name="name" placeholder="Ваше имя / компания" required></div>
           <div class="field"><input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
+          <div class="personal-consent"><label><input type="checkbox" name="personalDataConsent" value="yes" required> Даю согласие на обработку персональных данных</label><a href="consent.html" target="_blank" rel="noopener">Текст согласия (новая вкладка)</a> · <a href="privacy.html" target="_blank" rel="noopener">Политика обработки</a></div>
           <button type="submit" class="btn btn-blue" style="width:100%;justify-content:center">Открыть письмо</button>
           <p class="form-note">Откроется черновик письма. Отправьте его из почтового приложения на ag@metall-east.ru.</p>
         </form>

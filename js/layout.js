@@ -81,7 +81,12 @@ const FOOTER_HTML = `
         </div>
       </div>
     </div>
+    <div class="footer-notices">
+      <p>Работаем только с юридическими лицами и ИП по безналичному расчету!</p>
+      <p>Внимание! Информация, представленная на сайте носит ознакомительный характер и не является публичной офертой определяемой положениями ст. 437 ГК РФ.</p>
+    </div>
     <div class="footer-bottom">
+      <a href="privacy.html">Политика обработки персональных данных</a>
       <span>© 2017 ООО «МЕТАЛЛ-ИСТ» (METALL-EAST). Все права защищены.</span>
     </div>
   </div>
@@ -95,13 +100,14 @@ const MODAL_HTML = `
   <div class="modal-backdrop" data-close></div>
   <div class="modal-box">
     <button class="modal-close" aria-label="Закрыть" data-close>×</button>
-    <form>
+    <form method="post">
       <h3>Запросить счёт и КП</h3>
       <p>Укажите размеры, марку стали и количество.</p>
       <div class="field"><input type="text" name="name" placeholder="Ваше имя / Организация" required></div>
       <div class="field"><input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
       <div class="field"><input type="email" name="email" placeholder="Email для счёта"></div>
       <div class="field"><textarea name="msg" rows="3" placeholder="Марка стали (AISI 304/316), диаметр Ду, объём заказа"></textarea></div>
+      <div class="personal-consent"><label><input type="checkbox" name="personalDataConsent" value="yes" required> Даю согласие на обработку персональных данных</label><a href="consent.html" target="_blank" rel="noopener">Текст согласия (новая вкладка)</a> · <a href="privacy.html" target="_blank" rel="noopener">Политика обработки</a></div>
       <button type="submit" class="btn btn-blue" style="width:100%;justify-content:center">Открыть письмо</button>
       <p class="form-note">Откроется черновик письма. Отправьте его из почтового приложения на ag@metall-east.ru.</p>
     </form>

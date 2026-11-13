@@ -59,6 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function openRequestEmail(form, subject, items = []) {
   const values = new FormData(form);
+  if (values.get('personalDataConsent') !== 'yes') {
+    form.reportValidity();
+    return;
+  }
   const lines = [
     `Имя / компания: ${values.get('name')}`,
     `Телефон: ${values.get('phone')}`,
@@ -66,5 +70,6 @@ function openRequestEmail(form, subject, items = []) {
   if (values.get('email')) lines.push(`Email: ${values.get('email')}`);
   if (values.get('msg')) lines.push('', values.get('msg'));
   if (items.length) lines.push('', ...items);
+  lines.push('', 'Даю ООО «МЕТАЛЛ-ИСТ» согласие на обработку персональных данных для ответа на заявку. Текст согласия: редакция 2026-11-13.');
   location.href = `mailto:ag@metall-east.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
 }

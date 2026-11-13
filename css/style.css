@@ -503,3 +503,11 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
   .nav-catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav-catalog-panel { padding: 14px; }
 }
+
+.personal-consent { margin: 12px 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.personal-consent label { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 4px; color: var(--text); }
+.personal-consent input { flex: 0 0 auto; margin-top: 3px; }
+.personal-consent a, .personal-document a { text-decoration: underline; text-underline-offset: 3px; }
+.personal-document p { max-width: 78ch; margin-bottom: 16px; line-height: 1.65; }
+.modal-box { max-height: calc(100dvh - 40px); overflow-y: auto; }
+.footer-notices { display: grid; gap: 8px; margin: 18px 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
