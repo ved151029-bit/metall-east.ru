@@ -515,8 +515,8 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
 .catalog-folder-photo { width: 62px; height: 58px; object-fit: contain; }
 .range-grid .tube-category-photo { object-fit: contain; background: #151515; }
 .product-card .p-img:has(img[src^="img/tube-"]),
-.product-gallery:has(img[src^="img/tube-"]),
-.cart-item .ci-img:has(img[src^="img/tube-"]) { background: #151515; }
+.product-gallery:has(img[src^="img/tube-"], img[src="img/stainless-sheets.webp"]),
+.cart-item .ci-img:has(img[src^="img/tube-"], img[src="img/stainless-sheets.webp"]) { background: #151515; }
 
 .catalog-folder-with-photo { grid-template-columns: minmax(0, 1fr) auto; }
 .catalog-folder-with-photo .catalog-folder-photo {
