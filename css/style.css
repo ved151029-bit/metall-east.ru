@@ -511,3 +511,9 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
 .personal-document p { max-width: 78ch; margin-bottom: 16px; line-height: 1.65; }
 .modal-box { max-height: calc(100dvh - 40px); overflow-y: auto; }
 .footer-notices { display: grid; gap: 8px; margin: 18px 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+.catalog-folder-photo { width: 62px; height: 58px; object-fit: contain; }
+.range-grid .tube-category-photo { object-fit: contain; background: #151515; }
+.product-card .p-img:has(img[src^="img/tube-"]),
+.product-gallery:has(img[src^="img/tube-"]),
+.cart-item .ci-img:has(img[src^="img/tube-"]) { background: #151515; }

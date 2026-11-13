@@ -117,9 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
     sectionLinks.classList.add('catalog-overview-grid', 'catalog-folders');
     sectionLinks.innerHTML = Object.entries(section.types).map(([key, name]) =>
       `<a class="catalog-folder" href="${catalogUrl(category.id, key)}">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        ${section.typeImages?.[key]
+          ? `<img class="catalog-folder-photo" src="${section.typeImages[key]}" alt="">`
+          : `        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <path d="M3 6h6l2 2h10v11H3z" stroke-linejoin="round"/>
-        </svg>
+        </svg>`}
         <strong>${name}</strong><span aria-hidden="true">→</span>
       </a>`
     ).join('');
