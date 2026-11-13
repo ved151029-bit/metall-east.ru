@@ -1,5 +1,5 @@
 function steelGrade(product) {
-  return (product.name + ' ' + product.spec).match(/AISI \d{3}L?|12Х18Н10Т/i)?.[0] ?? '';
+  return (product.name + ' ' + product.spec).match(/AISI \d{3}L?|12Х18Н10Т|08Х17Н13М2/i)?.[0] ?? '';
 }
 
 function normalizeCatalogSearch(value) {
