@@ -16,7 +16,7 @@ const SECTIONS = {
       seamless: 'img/tube-seamless.webp',
       profile: 'img/tube-profile.webp',
     },
-    types: { welded: 'Труба круглая электросварная', seamless: 'Труба бесшовная', profile: 'Труба профильная' },
+    types: { welded: 'Трубы круглые электросварные', seamless: 'Трубы бесшовные', profile: 'Трубы профильные' },
   },
   listy: {
     image: 'img/cat-sheets.jpg',
