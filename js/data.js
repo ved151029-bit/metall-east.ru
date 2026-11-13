@@ -38,7 +38,7 @@ const SECTIONS = {
     image: 'img/cat-valves.jpg',
     typeImages: {
       'ball-valves': 'img/p-ballvalve3.png',
-      'butterfly-valves': 'img/butterfly-wafer.png',
+      'butterfly-valves': 'img/butterfly-weld-weld.png',
     },
     types: { 'ball-valves': 'Шаровые краны', 'butterfly-valves': 'Дисковые затворы' },
   },
