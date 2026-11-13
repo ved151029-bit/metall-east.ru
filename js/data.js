@@ -20,7 +20,12 @@ const SECTIONS = {
   },
   listy: {
     image: 'img/stainless-sheets.webp',
-    types: { mirror: 'Зеркальные листы', matte: 'Матовые листы', 'hot-rolled': 'Горячекатаные листы' },
+    types: {
+      'cold-rolled': 'Холоднокатаные матовые листы',
+      'hot-rolled': 'Горячекатаные листы',
+      textured: 'Рифлёные листы',
+      expanded: 'Листы ПВЛ',
+    },
   },
   fitingi: {
     foldersOnly: true,
@@ -72,9 +77,10 @@ const PRODUCTS = [
   {id:27, type:'welded', cat:'truby', name:'Труба электросварная AISI 316', spec:'Размер и исполнение уточняются по запросу', unit:'м', img:'img/tube-welded.webp', stock:'уточняйте наличие', desc:'Размер и исполнение уточняются по запросу.'},
   {id:3, type:'seamless', cat:'truby', name:'Труба бесшовная 08Х17Н13М2', spec:'Размер и исполнение уточняются по запросу', unit:'м', img:'img/tube-seamless.webp', stock:'уточняйте наличие', desc:'Размер и исполнение уточняются по запросу.'},
   {id:4, type:'profile', cat:'truby', name:'Труба профильная AISI 304', spec:'Размер и исполнение уточняются по запросу', unit:'м', img:'img/tube-profile.webp', stock:'уточняйте наличие', desc:'Размер и исполнение уточняются по запросу.'},
-  {id:5, type:'mirror', cat:'listy', name:'Лист AISI 304 зеркальный', spec:'1,0×1000×2000 мм · 2B/BA · пищевой', unit:'шт', img:'img/stainless-sheets.webp', stock:'на складе', desc:'Листовой прокат AISI 304 (08Х18Н10) с зеркальной полировкой. Для пищевого оборудования, дизайна интерьеров, лифтовых кабин и рекламных конструкций.'},
-  {id:6, type:'matte', cat:'listy', name:'Лист AISI 430 матовый', spec:'2,0×1250×2500 мм · 2B · ферритная сталь', unit:'кг', img:'img/stainless-sheets.webp', stock:'на складе', desc:'Ферритный лист AISI 430 (12Х17) с матовой поверхностью. Оптимальное соотношение цены и коррозионной стойкости для вентиляции, отделки и бытовой техники.'},
-  {id:7, type:'hot-rolled', cat:'listy', name:'Лист 12Х18Н10Т горячекатаный', spec:'3,0×1500×3000 мм · ГОСТ 19903-74 · жаропрочный', unit:'кг', img:'img/stainless-sheets.webp', stock:'на складе', desc:'Горячекатаный лист из стали 12Х18Н10Т. Работа в интервале температур до 600 °C, высокая прочность и свариваемость.'},
+  {id:28, type:'cold-rolled', cat:'listy', name:'Лист AISI 304, AISI 316 холоднокатаный (матовый)', spec:'Размер и исполнение уточняются по запросу', unit:'шт', img:'img/stainless-sheets.webp', stock:'уточняйте наличие', desc:'Размер и исполнение уточняются по запросу.'},
+  {id:29, type:'hot-rolled', cat:'listy', name:'Лист AISI 304, AISI 316 горячекатаный', spec:'Размер и исполнение уточняются по запросу', unit:'шт', img:'img/stainless-sheets.webp', stock:'уточняйте наличие', desc:'Размер и исполнение уточняются по запросу.'},
+  {id:30, type:'textured', cat:'listy', name:'Лист AISI 304 рифленый', spec:'Размер и исполнение уточняются по запросу', unit:'шт', img:'img/stainless-sheets.webp', stock:'уточняйте наличие', desc:'Размер и исполнение уточняются по запросу.'},
+  {id:31, type:'expanded', cat:'listy', name:'Лист AISI 304 ПВЛ', spec:'Размер и исполнение уточняются по запросу', unit:'шт', img:'img/stainless-sheets.webp', stock:'уточняйте наличие', desc:'Размер и исполнение уточняются по запросу.'},
   {id:8, type:'elbows', cat:'fitingi', name:'Отвод 90° AISI 304', spec:'57×3,0 мм · ГОСТ 17375-2001 · шовный', unit:'шт', img:'img/p-elbows.jpg', photo:true, stock:'на складе', desc:'Отвод крутоизогнутый 90° из нержавеющей стали AISI 304 для сварных трубопроводов. Толщина стенки равна толщине трубы — бесшовная геометрия.'},
   {id:16, type:'elbows', cat:'fitingi', name:'Отвод 90° AISI 316', spec:'57×3,0 мм', unit:'шт', img:'img/p-elbows.jpg', photo:true, stock:'уточняйте наличие', desc:'Отвод 90° из нержавеющей стали AISI 316. Стандарт и исполнение уточняются при запросе.'},
   {id:9, type:'tees', cat:'fitingi', name:'Тройник AISI 304', spec:'76,1×2,0 мм · равнопроходной, приварной', unit:'шт', img:'img/cat-fittings.png', stock:'на складе', desc:'Равнопроходной приварной тройник AISI 304 для разветвления трубопроводов под прямым углом. Под сварку встык или внахлест.'},

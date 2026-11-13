@@ -1,5 +1,5 @@
-function steelGrade(product) {
-  return (product.name + ' ' + product.spec).match(/AISI \d{3}L?|12Х18Н10Т|08Х17Н13М2/i)?.[0] ?? '';
+function steelGrades(product) {
+  return (product.name + ' ' + product.spec).match(/AISI \d{3}L?|12Х18Н10Т|08Х17Н13М2/gi) ?? [];
 }
 
 function normalizeCatalogSearch(value) {
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ).join('');
   }
 
-  const grades = [...new Set(sectionProducts.map(steelGrade).filter(Boolean))].sort();
+  const grades = [...new Set(sectionProducts.flatMap(steelGrades))].sort();
   grades.forEach(value => grade.add(new Option(value, value)));
 
   const emptyMessage = type && !sectionProducts.length
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const products = sectionProducts.filter(product => {
       const text = normalizeCatalogSearch(product.name + ' ' + product.spec);
       return words.every(word => text.includes(word)) &&
-        (!grade.value || steelGrade(product) === grade.value) &&
+        (!grade.value || steelGrades(product).includes(grade.value)) &&
         (!stock.value || product.stock === stock.value);
     });
     if (sort.value === 'name') products.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
