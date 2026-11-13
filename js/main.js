@@ -1,7 +1,7 @@
 // Общая логика: корзина, меню, модалка
 const Cart = {
   key: 'mi_cart',
-  get(){ try { return JSON.parse(localStorage.getItem(this.key)) || {}; } catch(e){ return {}; } },
+  get(){ try { const cart = JSON.parse(localStorage.getItem(this.key)) || {}; return Object.fromEntries(Object.entries(cart).filter(([id]) => PRODUCTS.some(product => String(product.id) === id))); } catch(e){ return {}; } },
   set(cart){ localStorage.setItem(this.key, JSON.stringify(cart)); updateCartBadge(); },
   add(id, qty = 1){ const c = this.get(); c[id] = (c[id] || 0) + qty; this.set(c); },
   setQty(id, qty){ const c = this.get(); if (qty <= 0) delete c[id]; else c[id] = qty; this.set(c); },

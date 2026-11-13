@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('productRoot');
   const id = +new URLSearchParams(location.search).get('id');
-  const p = PRODUCTS.find(x => x.id === id) || PRODUCTS[0];
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) {
+    root.innerHTML = '<p>Товар не найден.</p><a class="back-link" href="catalog.html">← Назад в каталог</a>';
+    return;
+  }
   const cat = CATEGORIES.find(c => c.id === p.cat);
 
   root.innerHTML = `

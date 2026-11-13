@@ -30,7 +30,7 @@ const SECTIONS = {
   },
   krany: {
     image: 'img/cat-valves.jpg',
-    types: { 'ball-valves': 'Шаровые краны', 'butterfly-valves': 'Дисковые затворы', 'gate-valves': 'Задвижки' },
+    types: { 'ball-valves': 'Шаровые краны', 'butterfly-valves': 'Дисковые затворы' },
   },
   flantsy: {
     foldersOnly: true,
@@ -80,7 +80,6 @@ const PRODUCTS = [
   {id:24, type:'butterfly-valves', cat:'krany', name:'Затвор дисковый резьба-сварка', spec:'Размер и исполнение уточняются по запросу', unit:'шт', img:'img/butterfly-thread-weld.png', stock:'уточняйте наличие', desc:'Дисковый затвор. Размер и исполнение уточняются при запросе.'},
   {id:25, type:'butterfly-valves', cat:'krany', name:'Затвор дисковый резьба-резьба', spec:'Размер и исполнение уточняются по запросу', unit:'шт', img:'img/butterfly-thread-thread.png', stock:'уточняйте наличие', desc:'Дисковый затвор. Размер и исполнение уточняются при запросе.'},
   {id:26, type:'butterfly-valves', cat:'krany', name:'Затвор дисковый межфланцевый', spec:'Размер и исполнение уточняются по запросу', unit:'шт', img:'img/butterfly-wafer.png', stock:'уточняйте наличие', desc:'Дисковый затвор. Размер и исполнение уточняются при запросе.'},
-  {id:13, type:'gate-valves', cat:'krany', name:'Задвижка нержавеющая Ду80', spec:'AISI 304 · PN16 · фланцевая, МЗВ', unit:'шт', img:'img/cat-valves.jpg', photo:true, stock:'под заказ', desc:'Фланцевая задвижка с невыдвижным шпинделем. Надёжная герметизация в двух направлениях, долгий межремонтный ресурс.'},
   {id:14, type:'flat-gost', cat:'flantsy', name:'Фланец плоский Ду50', spec:'AISI 304 · PN16 · ГОСТ 33259-2015, тип 01', unit:'шт', img:'img/cat-flanges.jpg', photo:true, stock:'на складе', desc:'Плоский приварной фланец AISI 304 по ГОСТ 33259-2015 (тип 01). Качественная обработка уплотнительной поверхности — надёжная герметичность.'},
   {id:15, type:'weld-neck-gost', cat:'flantsy', name:'Фланец воротниковый Ду100', spec:'AISI 304 · PN16 · ГОСТ 33259-2015, тип 11', unit:'шт', img:'img/cat-flanges.jpg', photo:true, stock:'на складе', desc:'Воротниковый фланец AISI 304 для высоких нагрузок и циклических режимов. Концентрация напряжений снижена за счёт плавного перехода в трубу.'},
 ];
