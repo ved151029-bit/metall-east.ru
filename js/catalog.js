@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('catalogListing').classList.add('catalog-folders-only');
     sectionLinks.classList.add('catalog-overview-grid', 'catalog-folders');
     sectionLinks.innerHTML = Object.entries(section.types).map(([key, name]) =>
-      `<a class="catalog-folder" href="${catalogUrl(category.id, key)}">
+      `<a class="catalog-folder${section.typeImages?.[key] ? ' catalog-folder-with-photo' : ''}" href="${catalogUrl(category.id, key)}">
         ${section.typeImages?.[key]
           ? `<img class="catalog-folder-photo" src="${section.typeImages[key]}" alt="">`
           : `        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
