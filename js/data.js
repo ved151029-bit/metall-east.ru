@@ -35,7 +35,7 @@ const SECTIONS = {
   },
   krany: {
     foldersOnly: true,
-    image: 'img/shutoff-valves-dark.webp',
+    image: 'img/shutoff-valves-collage.webp',
     typeImages: {
       'ball-valves': 'img/p-ballvalve3.png',
       'butterfly-valves': 'img/butterfly-category-blue-handle.webp',
