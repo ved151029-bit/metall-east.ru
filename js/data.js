@@ -19,6 +19,7 @@ const SECTIONS = {
     types: { welded: 'Трубы круглые электросварные', seamless: 'Трубы бесшовные', profile: 'Трубы профильные' },
   },
   listy: {
+    foldersOnly: true,
     image: 'img/stainless-sheets.webp',
     types: {
       'cold-rolled': 'Холоднокатаные матовые листы',

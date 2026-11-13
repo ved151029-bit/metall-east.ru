@@ -87,14 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const children = Object.entries(itemSection.types).map(([key, name]) =>
       `<a class="catalog-subnav" href="${catalogUrl(item.id, key)}"${active && key === type ? ' aria-current="page"' : ''}>${name}</a>`
     ).join('');
-    const parentLink = !itemSection.foldersOnly && (!active || type)
-      ? `<a class="catalog-subnav" href="${catalogUrl(item.id)}">Все подразделы</a>`
-      : '';
-    return `<button type="button" class="catalog-nav-toggle${active ? ' is-current' : ''}" aria-expanded="${active}" aria-controls="${panelId}"${itemSection.foldersOnly && (!active || type) ? ` data-section-url="${catalogUrl(item.id)}"` : ''}>
+    return `<button type="button" class="catalog-nav-toggle${active ? ' is-current' : ''}" aria-expanded="${active}" aria-controls="${panelId}"${(!active || type) ? ` data-section-url="${catalogUrl(item.id)}"` : ''}>
       ${item.name} <span aria-hidden="true">›</span>
     </button>
     <div class="catalog-nav-subfolders" id="${panelId}"${active ? '' : ' hidden'}>
-      ${parentLink}
       ${children}
     </div>`;
   }).join('');
