@@ -36,6 +36,10 @@ const SECTIONS = {
   krany: {
     foldersOnly: true,
     image: 'img/cat-valves.jpg',
+    typeImages: {
+      'ball-valves': 'img/p-ballvalve3.png',
+      'butterfly-valves': 'img/butterfly-wafer.png',
+    },
     types: { 'ball-valves': 'Шаровые краны', 'butterfly-valves': 'Дисковые затворы' },
   },
   flantsy: {
