@@ -548,15 +548,16 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
   z-index: 100;
   width: min(340px, calc(100% - 24px));
   padding: 24px 24px 20px;
-  border-radius: 8px;
-  background: #fff;
-  color: #171717;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
   text-align: center;
   font-size: 14px;
   line-height: 1.45;
   box-shadow: 0 8px 30px #0005;
 }
-.cookie-notice a { color: #b92d16; text-decoration: underline; }
+.cookie-notice a { color: var(--accent); text-decoration: underline; }
 .cookie-notice-close {
   position: absolute;
   top: 4px;
@@ -574,8 +575,8 @@ footer { border-top: 1px solid var(--line); background: var(--bg2); padding: 56p
   padding: 8px 18px;
   border: 0;
   border-radius: 24px;
-  background: #c63319;
-  color: #fff;
+  background: var(--btn-grad);
+  color: var(--btn-text);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
