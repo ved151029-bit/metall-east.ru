@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   root.innerHTML = `
     <a class="back-link" href="catalog.html?cat=${p.cat}">← Назад в каталог</a>
     <div class="product-layout">
-      <div class="product-gallery">
+      ${p.img ? `<div class="product-gallery">
         <img class="${p.photo ? 'photo' : ''}" src="${p.img}" alt="${p.name}">
-      </div>
+      </div>` : '<div class="product-gallery">Фото по запросу</div>'}
       <div class="product-info">
         <span class="p-cat">${cat.name}</span>
         <h1>${p.name}</h1>

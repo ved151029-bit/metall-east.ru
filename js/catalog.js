@@ -153,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('resultCount').textContent = 'Позиций: ' + products.length;
     grid.innerHTML = products.map(product => `
       <article class="product-card">
-        <a class="p-img" href="product.html?id=${product.id}">
+        ${product.img ? `<a class="p-img" href="product.html?id=${product.id}">
           <img class="${product.photo ? 'photo' : ''}" src="${product.img}" alt="${product.name}" loading="lazy">
-        </a>
+        </a>` : ''}
         <div class="p-body">
           <div class="catalog-product-details">
             <span class="p-cat">${SECTIONS[product.cat].types[product.type]}</span>

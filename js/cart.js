@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!p) return;
       positions++;
       rows += `<div class="cart-item" data-id="${p.id}">
-        <a class="ci-img" href="product.html?id=${p.id}"><img src="${p.img}" alt="${p.name}"></a>
+        <a class="ci-img" href="product.html?id=${p.id}">${p.img ? `<img src="${p.img}" alt="${p.name}">` : 'Фото по запросу'}</a>
         <div>
           <a class="ci-name" href="product.html?id=${p.id}">${p.name}</a>
           <p class="ci-spec">${p.spec}</p>
