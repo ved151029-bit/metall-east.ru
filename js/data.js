@@ -21,6 +21,13 @@ const SECTIONS = {
   listy: {
     foldersOnly: true,
     image: 'img/stainless-sheets.webp',
+    typeImages: {
+      'cold-rolled': 'img/stainless-sheets.webp',
+      'hot-rolled': 'img/stainless-sheets.webp',
+      'textured': 'img/stainless-sheets-textured.webp',
+      'expanded': 'img/stainless-sheets-expanded.webp',
+      'perforated': 'img/stainless-sheets-perforated-collage.webp',
+    },
     types: {
       'cold-rolled': 'Холоднокатаные матовые листы',
       'hot-rolled': 'Горячекатаные листы',
